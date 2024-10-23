@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Page</title>
+    <style>
+        body {
+            font-family: math;
+            background-color: #e7f1ff;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            position: relative;
+        }
+        fieldset {
+            padding: 100px;
+            border-radius: 40px;
+            background-color: lightcoral;
+            border: none;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            position: relative;
+        }
+        header {
+            background-color: #e7f1ffa8;
+            border-radius: 40px;
+            color: #4595d5;
+            padding: 20px 0;
+            width: 100%;
+            text-align: center;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+        }
+        .container {
+            text-align: center;
+        }
+        .container a {
+            display: inline-block;
+            margin: 20px 10px;
+            padding: 15px 30px;
+            background-color: #007bd8;
+            color: #fff;
+            text-decoration: auto;
+            border-radius: 30px;
+            transition: auto;
+            font-size: 28px;
+        }
+        .container a:hover {
+            background-color: #0056b3;
+            transform: scale(1.05);
+        }
+        h1 {
+            font-size: 48px;
+            color: #333;
+            margin-bottom: 50px;
+        }
+        .back-link {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            padding: 14px 60px;
+            background-color: #007bd8;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 40px;
+            font-size: 25px;
+        }
+        .back-link:hover {
+            background-color: #0056b3;
+            transform: scale(1.05);
+        }
+    </style>
+</head>
+<body>
+    <a class="back-link" href="javascript:history.back()">Back</a>
+    <fieldset>
+        <header>
+            <h1>Admin Home</h1>
+        </header>
+        <div class="container">
+            <a href="/admin/categories">Category</a>
+            <a href="/admin/products">Product</a>
+            <a href="/admin/registration1">Admin</a>
+        </div>
+    </fieldset>
+</body>
+</html>

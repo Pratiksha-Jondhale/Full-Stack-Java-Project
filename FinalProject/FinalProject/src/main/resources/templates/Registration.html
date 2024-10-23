@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registration Form</title>
+    <link rel="stylesheet" href="/css/styles.css">
+    <style>
+        body {
+            font-family: math;
+            background-color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            position: relative;
+        }
+        .container {
+            background-color: powderblue;
+            padding: 80px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 50%;
+            max-width: 300px;
+        } 
+        h2 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+        .form-group label {
+            display: block;
+            margin-bottom: 10px;
+        }
+        .form-group input {
+            width: 100%;
+            padding: 8px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-sizing: border-box;
+        }
+        .message {
+            background-color: #e74c3c;
+            color: #fff;
+            padding: 10px;
+            border-radius: 4px;
+            margin-bottom: 5px;
+            text-align: center;
+        }
+        .btn {
+            width: 100%;
+            padding: 10px;
+            border: none;
+            border-radius: 4px;
+            background-color: #5cb85c;
+            color: #fff;
+            font-size: 16px;
+            cursor: pointer;
+        }
+        .btn:hover {
+            background-color: rgb(0, 236, 60);
+        }
+        .linkControl {
+            color: #5bc0de;
+            text-decoration: none;
+        }
+        .linkControl:hover {
+            text-decoration: underline;
+        }
+        span {
+            display: block;
+            text-align: center;
+            margin-top: 20px;
+        }
+        .back-link {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            padding: 14px 60px;
+            background-color: #007bd8;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 40px;
+            font-size: 25px;
+        }
+        .back-link:hover {
+            background-color: #0056b3;
+            transform: scale(1.05);
+        }
+    </style>
+</head>
+<body>
+    <a class="back-link" href="javascript:history.back()">Back</a>
+    <div class="container">
+        <div class="message" th:if="${message != null}">
+            [[${message}]]
+        </div>
+        
+        <h2>Registration Form</h2>
+        <form th:action="@{/registration}" method="post" role="form" th:object="${user}">
+            <div class="form-group">
+                <label for="fullName">Full Name</label>
+                <input type="text" id="fullName" name="fullName" required placeholder="Enter Full Name">
+            </div>
+            <div class="form-group">
+                <label for="email">Email</label>
+                <input type="email" id="email" name="email" required placeholder="Enter Email">
+            </div>
+            <div class="form-group">
+                <label for="password">Password</label>
+                <input type="password" id="password" name="password" required placeholder="Enter Password">
+            </div>
+            <button type="submit" class="btn">Register</button>
+            <span>Already have an account? <a class="linkControl" href="./login.html" th:href="@{/login}">Login here</a></span>
+        </form>
+    </div>
+</body>
+</html>

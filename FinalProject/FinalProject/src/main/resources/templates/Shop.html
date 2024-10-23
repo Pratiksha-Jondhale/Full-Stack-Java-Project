@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootswatch/4.4.1/cyborg/bootstrap.min.css">
+    <title>Online Shop</title>
+</head>
+<body>
+    
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <a class="navbar-brand" th:href="@{/}">MyShop</a>
+    <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ml-auto">
+            <li class="nav-item"><a class="nav-link" th:href="@{/}">Home</a></li>
+            <li class="nav-item"><a class="nav-link" th:href="@{/shop}">Shop</a></li>
+            <li class="nav-item" sec:authorize="isAnonymous()"><a class="nav-link" th:href="@{/login}">Login</a></li>
+            <li class="nav-item" sec:authorize="isAuthenticated()"><a class="nav-link" th:href="@{/logout}">Logout</a></li>
+            <li class="nav-item"><a class="nav-link" th:href="@{/cart}">Cart</a></li>
+            <li class="nav-item"><span class="nav-link" th:text="${cartCount}">0</span></li>
+        </ul>
+    </div>
+</nav>
+
+<div class="container mt-4">
+    <div class="row">
+        <div class="col-md-3">
+            <h4 class="text-white">Categories</h4>
+            <ul class="list-group">
+                <li class="list-group-item bg-dark"><a class="text-white" th:href="@{/shop}">All Products</a></li>
+                <li class="list-group-item bg-dark" th:each="category : ${categories}">
+                    <a class="text-white" th:href="@{/shop/category/{id}(id=${category.id})}" th:text="${category.name}"></a>
+                </li>
+            </ul>
+        </div>
+        <div class="col-md-9">
+            <div class="card bg-dark text-white mb-3" th:each="product : ${products}">
+                <div class="row no-gutters">
+                    <div class="col-md-4 d-flex justify-content-center align-items-center">
+                        <img class="img-fluid" th:src="@{${'/productImages/' + product.imgName}}" th:alt="${product.name}">
+                    </div>
+                    <div class="col-md-8">
+                        <div class="card-body">
+                            <h5 class="card-title" th:text="${product.name}"></h5>
+                            <h4>₹ <span th:text="${product.price}"></span></h4>
+                            <a href="#" th:href="@{/shop/viewproduct/{id}(id=${product.product_id})}" class="btn btn-primary">View Product</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" crossorigin="anonymous"></script>
+</body>
+</html>
